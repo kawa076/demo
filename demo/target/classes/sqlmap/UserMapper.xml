@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.demo.dao.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.demo.dao.model.User" >
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	<select id="findUser" parameterType="com.cn.demo.dao.model.User" resultMap="BaseResultMap">
+		select username, pwd, salt
+		from t_user
+		where 1=1
+		<if test="username != null">
+		and username = #{username,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>
