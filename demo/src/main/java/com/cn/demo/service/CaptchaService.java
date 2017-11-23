@@ -1,4 +1,4 @@
-//package com.cn.demo.service;
+package com.cn.demo.service;
 //
 //import java.awt.Color;
 //import java.awt.Font;
@@ -15,7 +15,7 @@
 //import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 //import com.octo.captcha.service.image.ImageCaptchaService;
 //
-//public class CaptchaService {
+public class CaptchaService {
 //	private static class SingletonHolder {
 //		private static ImageCaptchaService imageCaptchaService = new DefaultManageableImageCaptchaService(
 //				new FastHashMapCaptchaStore(),
@@ -35,4 +35,4 @@
 //	public static ImageCaptchaService getInstance() {
 //		return SingletonHolder.imageCaptchaService;
 //	}
-//}
+}

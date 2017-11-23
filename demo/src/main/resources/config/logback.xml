@@ -104,7 +104,7 @@
     <root level="INFO">
         <appender-ref ref="app-err"/>
         <appender-ref ref="app-info"/>
-         <appender-ref ref="STDOUT"/>
+         <!--<appender-ref ref="STDOUT"/>-->
         <!--<appender-ref ref="db-classic-mysql-pool"/>-->
     </root>
 

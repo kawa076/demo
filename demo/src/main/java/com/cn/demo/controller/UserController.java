@@ -28,4 +28,19 @@ public class UserController {
 		return userService.findUser(user);
 	}
 	
+	@RequestMapping(value = "subUser", method = RequestMethod.GET)
+	@ResponseBody
+	public String subscribUser(){
+		logger.info("start invoke usercontroller.subscribUser");
+		userService.subUser();
+		return "OK";
+	}
+	
+	@RequestMapping(value = "pubUser", method = RequestMethod.GET)
+	@ResponseBody
+	public String publishUser(){
+		logger.info("start invoke usercontroller.publishUser");
+		userService.publishUser();
+		return "OK";
+	}
 }

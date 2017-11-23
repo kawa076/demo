@@ -7,5 +7,7 @@
                         http://www.springframework.org/schema/context    
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 <!-- 自动扫描service -->                        
-<context:component-scan base-package="com.cn.demo.service"/>                        
+<context:component-scan base-package="com.cn.demo.service"/>  
+<context:component-scan base-package="com.cn.demo.template" />   
+<bean id="myEvent"  class="com.cn.demo.service.MyEvent"></bean>                    
 </beans>

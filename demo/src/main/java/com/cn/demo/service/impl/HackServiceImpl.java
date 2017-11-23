@@ -8,22 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.cn.demo.service.HackService;
 
-@Service
+@Service("hackService")
 public class HackServiceImpl implements HackService{
 	public static Logger logger = LoggerFactory.getLogger(HackServiceImpl.class);
-	@Override
 	public <T> void doHack(T obj) {
 		
 		logger.info("invoke HackServiceImpl.doHack");
 	}
 
-	@Override
 	public List<?> getSecretInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void damageDevice() {
 		// TODO Auto-generated method stub
 		

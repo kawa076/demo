@@ -28,7 +28,7 @@
         </bean>
         <bean id="sayTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
             <property name="jobDetail" ref="sayHelloTask"/>
-            <property name="cronExpression" value="0/5 * * * * ?" />
+            <property name="cronExpression" value="0 * * * * ?" />
             <property name="startDelay" value="1000" />
         </bean>
         <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
