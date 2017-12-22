@@ -2,6 +2,8 @@ package com.cn.demo.service;
 
 
 
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +16,24 @@ public class TaskHello {
 	private static Logger logger = LoggerFactory.getLogger(TaskHello.class);
 
 
-	@Autowired
-	HackAttackService hackAttackService;
-	
-	@Autowired
-	HackServiceImplA hackServiceImplA;
+//	@Autowired
+//	HackAttackService hackAttackService;
+//	
+//	@Autowired
+//	HackServiceImplA hackServiceImplA;
 	
 	public void sayHello(){
-		HackDo hackDo = null;
-//		ThreadPoolUtil.getInstance().init(10, 50, 10, 200);
+//		HackDo hackDo = null;
+		
 		String log = "haha,hello World, this is TaskHello, ha ha ha ha ha,^=^^=^^=^^=^^=^";
 		logger.info(log);
-		hackDo = hackAttackService;
-		hackDo.doHack(null);
-		hackDo = hackServiceImplA;
-		hackDo.doHack(null);
-		LogbackRecord.getInstance().recordLog(log);
-//		for(int i=0;i<300;i++){
-//			final int index = i;
+//		hackDo = hackAttackService;
+//		hackDo.doHack(null);
+//		hackDo = hackServiceImplA;
+//		hackDo.doHack(null);
+//		LogbackRecord.getInstance().recordLog(log);
+		for(int i=0;i<1500;i++){
+			final int index = i;
 //			logger.info("submit thread,the thread number is: " + index );
 //			LogbackRecord.getInstance().recordLog("submit thread,the thread number is: " + index );
 //			ThreadPoolUtil.getInstance().submitTask(new Runnable(){
@@ -40,7 +42,7 @@ public class TaskHello {
 //					logger.info("haha,start run thread:" + index + "thread name is :" + Thread.currentThread().getName());
 //					LogbackRecord.getInstance().recordLog("haha,start run thread:" + index + "thread name is :" + Thread.currentThread().getName());
 //					try {
-//						Thread.sleep(500);
+//						TimeUnit.SECONDS.sleep(2000);;
 //					} catch (InterruptedException e) {
 //						// TODO Auto-generated catch block
 //						e.printStackTrace();
@@ -50,7 +52,13 @@ public class TaskHello {
 //				}
 //				
 //			});
-//		}
+			try {
+				ThreadPoolUtil.getInstance().submitTask(new HelloThread());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				logger.error("Ïß³Ì³ØÒì³£:{}",e);
+			}
+		}
 	
 	}
 }

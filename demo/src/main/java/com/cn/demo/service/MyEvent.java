@@ -12,7 +12,7 @@ public class MyEvent implements ApplicationContextAware{
 	
 
 	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
-		this.ctx = arg0;
+		MyEvent.ctx = arg0;
 		
 	}
 

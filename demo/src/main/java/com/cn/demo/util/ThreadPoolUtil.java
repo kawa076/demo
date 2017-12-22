@@ -43,18 +43,21 @@ public class ThreadPoolUtil {
 		this.dequeMaxSize = dequeMaxSize;
 		if(worker == null){
 			BlockingDeque<Runnable> deque = new LinkedBlockingDeque<Runnable>(dequeMaxSize);
-			worker = new ThreadPoolExecutor(coreThreadSize, maxThreadSize, keepAliveTime, TimeUnit.SECONDS, deque, new ThreadPoolExecutor.CallerRunsPolicy());
+			worker = new ThreadPoolExecutor(coreThreadSize, maxThreadSize, keepAliveTime, TimeUnit.SECONDS, deque, new CustomPolicy());
 			logger.info("thread pool started");
 		}
 	}
 	
-	public Future<?> submitTask(Runnable thread){
+	@SuppressWarnings("rawtypes")
+	public Future submitTask(Runnable thread){
 		if(worker == null){
 			init(coreThreadSize, maxThreadSize, keepAliveTime, dequeMaxSize);
 		}
-		
+		if(getQueueSize() > 0){
+			logger.info("队列中的thread数为：" + getQueueSize());
+		}
 		try {
-			Future<?> future = worker.submit(thread);
+			Future future = worker.submit(thread);
 			return future;
 		} catch (Exception e) {
 			logger.error("submit thread error");
@@ -67,5 +70,12 @@ public class ThreadPoolUtil {
 			worker.shutdown();
 			logger.info("thread pool stop");
 		}
+	}
+	
+	private int getQueueSize(){
+		if(worker != null){
+			return worker.getQueue().size();
+		}
+		return 0;
 	}
 }
